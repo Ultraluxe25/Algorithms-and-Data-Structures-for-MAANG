@@ -32,6 +32,7 @@ Constraints:
 -10^6 <= nums[i] <= 10^6
 """
 
+# Solution 1 (Old version)
 class Solution(object):
     def runningSum(self, nums):
         """
@@ -39,4 +40,27 @@ class Solution(object):
         :rtype: List[int]
         """
         return [sum(nums[:i]) for i in range(1, len(nums) + 1)]
+    
+
+# Solution 2 (18.05.2024)
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        new_nums = []
+        for i in range(len(nums)):
+            new_nums.append(sum(nums[:i + 1]))
+
+        return new_nums
+        
+
+# Solution 3 (better in 18.05.2024)
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        new_nums = []
+        total = 0 
+        
+        for i in range(len(nums)):
+            total += nums[i]
+            new_nums.append(total)
+
+        return new_nums
         
