@@ -36,8 +36,24 @@ Constraints:
 s consists only of printable ASCII characters.
 """
 
+# Solution 1 (Brute Force)
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         result = "".join(char for char in s.lower() if char.isalnum())
         return result == result[::-1]
-    
+
+# Solution 2 (Two pointers)
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        clean = ''.join([i.lower() for i in s if i.isalnum()])
+
+        i = 0
+        j = len(clean) - 1
+        while i < j:
+            if clean[i] != clean[j]:
+                return False
+            i += 1
+            j -= 1
+
+        return True
+ 
