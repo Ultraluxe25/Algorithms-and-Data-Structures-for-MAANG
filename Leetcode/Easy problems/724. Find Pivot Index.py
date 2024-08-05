@@ -68,3 +68,20 @@ class Solution:
             return n - 1
 
         return -1
+
+
+# Solution 2 (O(n) beautiful solution)
+class Solution:
+    def pivotIndex(self, nums: List[int]) -> int:
+        left, right = 0, sum(nums)  # Left, right sums
+
+        for i in range(len(nums)):
+            right -= nums[i]
+            if left == right:
+                return i
+                
+            left += nums[i]
+            # print(left, right)
+
+        return -1
+        
