@@ -10,7 +10,7 @@ Return the wealth that the richest customer has.
 A customer's wealth is the amount of money they have in all their bank accounts. 
 The richest customer is the customer that has the maximum wealth.
 
- 
+
 Example 1:
 
 Input: accounts = [[1,2,3],[3,2,1]]
@@ -47,7 +47,7 @@ n == accounts[i].length
 
 # Solution 1 (Brute force)
 class Solution:
-    def maximumWealth(self, accounts: List[List[int]]) -> int:
+    def maximumWealth(self, accounts: list[list[int]]) -> int:
         tycoon = sum(accounts[0])
         for account in accounts[1:]:
             money = sum(account)
@@ -58,6 +58,25 @@ class Solution:
 
 
 # Solution 2 (Few code)
-class Solution:
-    def maximumWealth(self, accounts: List[List[int]]) -> int:
+class Solution2:
+    def maximumWealth(self, accounts: list[list[int]]) -> int:
         return max(map(sum, accounts))
+    
+
+# Solution 3 (List Comprehension)
+class Solution3:
+    def maximumWealth(self, accounts: list[list[int]]) -> int:
+        return max(sum(acc) for acc in accounts)
+    
+# Solution 4 (Beats 100% time complexity)
+class Solution4:
+    def maximumWealth(self, accounts: list[list[int]]) -> int:
+        wealth = 0
+
+        for acc in accounts:
+            money = sum(acc)
+            # Update wealth if current customer is richer
+            wealth = max(wealth, money)
+
+        return wealth
+    
