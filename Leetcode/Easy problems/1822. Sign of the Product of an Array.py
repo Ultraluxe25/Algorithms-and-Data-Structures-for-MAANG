@@ -52,8 +52,24 @@ class Solution:
         return 1  # product > 0
 
 
-    def arraySign(self, nums: List[int]) -> int:
+    def arraySign(self, nums: list[int]) -> int:
         mult = reduce(lambda x, y: x * y, nums)
         result = self.signFunc(mult)
 
         return result
+
+
+# Beats 99% space complexity (O(n), O(1))
+class Solution2:
+    def arraySign(self, nums: list[int]) -> int:
+        neg = 0  # Quantity of negative numbers
+
+        for n in nums:           
+            if n == 0:
+                return 0
+
+            # neg += n < 0  # True/False == 1/0
+            if n < 0:
+                neg += 1
+
+        return 1 if neg % 2 == 0 else -1
