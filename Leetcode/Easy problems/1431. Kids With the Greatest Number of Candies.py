@@ -46,11 +46,23 @@ n == candies.length
 """
 
 class Solution:
-    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+    def kidsWithCandies(self, candies: list[int], extraCandies: int) -> list[bool]:
         big = max(candies)
         result = []
         for i in candies:
             result.append(i + extraCandies >= big)
         
         return result
+    
+
+# Beats 100% time complexity, 90% space complexity
+class Solution2:
+    def kidsWithCandies(self, candies: list[int], extraCandies: int) -> list[bool]:
+        sweetest = max(candies)
+
+        for idx, c in enumerate(candies):
+            # To save memory we don't create a new array (but in real projects we should)
+            candies[idx] = c + extraCandies >= sweetest
+
+        return candies
         
