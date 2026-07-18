@@ -37,7 +37,7 @@ nums.length == 2n
 """
 
 class Solution:
-    def shuffle(self, nums: List[int], n: int) -> List[int]:
+    def shuffle(self, nums: list[int], n: int) -> list[int]:
         n = len(nums) // 2
         x = nums[:n]
         y = nums[n:]
@@ -47,3 +47,17 @@ class Solution:
             result += [i[0], i[1]]
 
         return result
+    
+
+# Clear solution (18.07.2026)
+class Solution2:
+    def shuffle(self, nums: list[int], n: int) -> list[int]:
+        arr = []
+        
+        for i in range(n):
+            # arr += [nums[i], nums[i + n]]
+            arr.append(nums[i])
+            arr.append(nums[i + n])
+
+        return arr
+
