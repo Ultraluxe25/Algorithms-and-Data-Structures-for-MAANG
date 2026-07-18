@@ -41,5 +41,17 @@ All the words in sentences[i] are separated by a single space.
 """
 
 class Solution:
-    def mostWordsFound(self, sentences: List[str]) -> int:
+    def mostWordsFound(self, sentences: list[str]) -> int:
         return max([letter.count(' ') for letter in sentences]) + 1
+
+
+
+class Solution2:
+    def mostWordsFound(self, sentences: list[str]) -> int:
+        max_len = 0
+
+        for sent in sentences:
+            # max_len = max(max_len, sent.count(' ') + 1)
+            max_len = max(max_len, len(sent.split()))
+
+        return max_len
