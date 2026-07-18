@@ -42,10 +42,19 @@ Follow-up: Can you solve it without using an extra space (i.e., O(1) memory)?
 
 # Solution 1 (Brute force, O(n) space complexity)
 class Solution:
-    def buildArray(self, nums: List[int]) -> List[int]:
+    def buildArray(self, nums: list[int]) -> list[int]:
         n = len(nums)
         ans = [0 for i in range(n)]
         for i in range(n):
             ans[i] = nums[nums[i]]
         
+        return ans
+
+
+# Solution 2
+class Solution2:
+    def buildArray(self, nums: list[int]) -> list[int]:
+        n = len(nums)
+        ans = [nums[nums[i]] for i in range(n)]
+
         return ans
