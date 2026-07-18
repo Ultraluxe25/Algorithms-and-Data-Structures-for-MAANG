@@ -31,9 +31,22 @@ Constraints:
 All the integers of salary are unique.
 """
 
+# Time complexity: O(nlogn)
 class Solution:
-    def average(self, salary: List[int]) -> float:
+    def average(self, salary: list[int]) -> float:
         salary.sort()
         n = len(salary)
         return sum(salary[1:-1]) / (n - 2)
     
+
+# Time complexity: O(n), beats 100% time complexity
+# 18.07.2026
+class Solution2:
+    def average(self, salary: list[int]) -> float:
+        total = sum(salary)
+        min_salary = min(salary)
+        max_salary = max(salary)
+        n = len(salary)
+
+        return (total - min_salary - max_salary) / (n - 2)
+        
