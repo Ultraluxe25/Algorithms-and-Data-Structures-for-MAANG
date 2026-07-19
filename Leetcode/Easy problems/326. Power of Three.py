@@ -51,7 +51,7 @@ class Solution:
 
 
 # Solution 2 (Recursion)
-class Solution:
+class Solution2:
     def isPowerOfThree(self, n: int) -> bool:
         if n <= 0:
             return False
@@ -59,3 +59,13 @@ class Solution:
             return True
         
         return self.isPowerOfThree(n / 3.0)
+
+
+# Solution 3 (While loop)
+class Solution3:
+    def isPowerOfThree(self, n: int) -> bool:
+        while n >= 3:
+            n /= 3
+
+        return n == 1.0
+    

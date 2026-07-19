@@ -55,7 +55,7 @@ operations[i] will be either "++X", "X++", "--X", or "X--".
 """
 
 class Solution:
-    def finalValueAfterOperations(self, operations: List[str]) -> int:
+    def finalValueAfterOperations(self, operations: list[str]) -> int:
         x = 0
         for i in operations:
             if i[1] == '-':
@@ -64,3 +64,14 @@ class Solution:
                 x += 1
 
         return x
+
+
+class Solution2:
+    def finalValueAfterOperations(self, operations: list[str]) -> int:
+        value = 0
+
+        for op in operations:
+            value += 1 if op[1] == '+' else -1
+
+        return value
+    

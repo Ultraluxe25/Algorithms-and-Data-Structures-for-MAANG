@@ -42,6 +42,17 @@ Constraints:
 """
 
 class Solution:
-    def numberOfEmployeesWhoMetTarget(self, hours: List[int], target: int) -> int:
+    def numberOfEmployeesWhoMetTarget(self, hours: list[int], target: int) -> int:
         return sum([1 for i in hours if i >= target])
-        
+
+
+class Solution2:
+    def numberOfEmployeesWhoMetTarget(self, hours: list[int], target: int) -> int:
+        work_ok = 0
+
+        for h in hours:
+            if h >= target:
+                work_ok += 1
+
+        return work_ok
+    
