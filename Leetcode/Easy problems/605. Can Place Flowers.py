@@ -29,8 +29,9 @@ There are no two adjacent flowers in flowerbed.
 0 <= n <= flowerbed.length
 """
 
+# O(n) space with While loop
 class Solution:
-    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+    def canPlaceFlowers(self, flowerbed: list[int], n: int) -> bool:
         flowerbed = [0] + flowerbed + [0]  # Add empty borders
         j = 1
         while j < len(flowerbed) - 1:
@@ -42,3 +43,36 @@ class Solution:
                 j += 1
 
         return n <= 0
+
+
+# O(n) space complexity with For loop
+class Solution2:
+    def canPlaceFlowers(self, flowerbed: list[int], n: int) -> bool:
+        # Add empty plots at both ends to simplify edge cases
+        flowerbed.insert(0, 0)
+        flowerbed.append(0)
+
+        for i in range(1, len(flowerbed) - 1):
+            if not sum(flowerbed[i - 1 : i + 2]):
+                # If the current plot and its neighbors are empty, plant a flower
+                n -= 1
+                flowerbed[i] = 1
+
+        # If we've planted all required flowers (or more), return True
+        return n <= 0
+        
+
+# O(1) space complexity
+class Solution3:
+    def canPlaceFlowers(self, flowerbed: list[int], n: int) -> bool:
+        for i in range(len(flowerbed)):
+            if flowerbed[i] == 0:
+                left_place = (i == 0) or flowerbed[i - 1] == 0
+                right_place = (i == len(flowerbed) - 1) or flowerbed[i + 1] == 0
+
+                if left_place and right_place:
+                    flowerbed[i] = 1
+                    n -= 1
+
+        return n <= 0
+        
